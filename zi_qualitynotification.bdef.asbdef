@@ -1,0 +1,111 @@
+behavior for ZI_QUALITYNOTIFICATION alias QualityNotification
+persistent table qmel
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  association _Items { create; }
+  association _Tasks { create; }
+  association _Activities { create; }
+  association _Causes { create; }
+  association _Texts { create; }
+
+  mapping for qmel {
+    QualityNotification = qmnum;
+    NotificationType = qmart;
+    NotificationText = qmtxt;
+    CreationDate = erdat;
+    CreatedBy = ernam;
+    LastChangeDate = aedat;
+    LastChangedBy = aenam;
+    CustomFieldQmel = zz_custom_field_qmel;
+  }
+}
+
+behavior for ZI_QMFE alias QualityNotificationItem
+persistent table qmfe
+lock dependent by _Notification
+authorization dependent by _Notification
+{
+  field ( readonly ) QualityNotification;
+  update;
+  delete;
+
+  mapping for qmfe {
+    QualityNotification = qmnum;
+    NotificationItem = fenum;
+    ItemText = fetxt;
+    CustomFieldQmfe = zz_custom_field_qmfe;
+  }
+}
+
+behavior for ZI_QMSM alias QualityNotificationTask
+persistent table qmsm
+lock dependent by _Notification
+authorization dependent by _Notification
+{
+  field ( readonly ) QualityNotification;
+  update;
+  delete;
+
+  mapping for qmsm {
+    QualityNotification = qmnum;
+    TaskKey = manum;
+    TaskText = matxt;
+    CustomFieldQmsm = zz_custom_field_qmsm;
+  }
+}
+
+behavior for ZI_QMMA alias QualityNotificationActivity
+persistent table qmma
+lock dependent by _Notification
+authorization dependent by _Notification
+{
+  field ( readonly ) QualityNotification;
+  update;
+  delete;
+
+  mapping for qmma {
+    QualityNotification = qmnum;
+    ActivityKey = manum;
+    ActivityText = matxt;
+    CustomFieldQmma = zz_custom_field_qmma;
+  }
+}
+
+behavior for ZI_QMUR alias QualityNotificationCause
+persistent table qmur
+lock dependent by _Notification
+authorization dependent by _Notification
+{
+  field ( readonly ) QualityNotification;
+  update;
+  delete;
+
+  mapping for qmur {
+    QualityNotification = qmnum;
+    CauseKey = urnum;
+    CauseText = urtxt;
+    CustomFieldQmur = zz_custom_field_qmur;
+  }
+}
+
+behavior for ZI_QMELTEXT alias QualityNotificationLongText
+persistent table qmeltext
+lock dependent by _Notification
+authorization dependent by _Notification
+{
+  field ( readonly ) QualityNotification;
+  update;
+  delete;
+
+  mapping for qmeltext {
+    QualityNotification = qmnum;
+    TextLine = text_line;
+    CustomFieldQmeltext = zz_custom_field_qmeltext;
+  }
+}

@@ -1,0 +1,1 @@
+create a custom RAP managed API with unmanaged save to manage Quality Notification with all CRUD operations of all tables QMEL, QMFE, QMSM, QMMA, QMUR, QMELTEXT and considering custom fields in all these tables using BAPI_QUALNOT_CREATE for Create operation, BAPI_QUALNOT_MODIFY_DATA for update operation and BAPI_QUALNOT_DEL_DATA for delete operation

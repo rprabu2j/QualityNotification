@@ -1,0 +1,6 @@
+@OData.publish: true
+@EndUserText.label: 'Quality Notification API'
+
+define service ZAPI_QUALITYNOTIFICATION {
+  expose ZC_QUALITYNOTIFICATION as QualityNotification;
+}
